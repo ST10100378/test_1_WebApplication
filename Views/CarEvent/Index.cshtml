@@ -1,0 +1,23 @@
+﻿@model List<test_1_WebApplication.Models.CarEvent>
+
+<h1>Upcoming Car Events</h1>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Date</th>
+            <th>Location</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var carEvent in Model)
+        {
+            <div class="event-card">
+                <img src="@carEvent.ImageUrl" alt="@carEvent.Name" />
+                <h3><a asp-controller="CarEvent" asp-action="Details" asp-route-id="@carEvent.Id">@carEvent.Name</a></h3>
+                <p>Date: @carEvent.Date.ToShortDateString()</p>
+                <p>Location: @carEvent.Location</p>
+            </div>
+        }
+    </tbody>
+</table>
